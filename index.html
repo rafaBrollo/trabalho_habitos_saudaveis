@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Hábitos Saudáveis</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: rgb(89, 120, 207);
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #aaa;
+        }
+
+        input {
+            width: 95%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: #0088ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #0066cc;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            background: white;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Calculadora de Hábitos</h2>
+
+        <label>Quantos copos de água você tomou hoje?</label>
+        <input type="number" id="agua" placeholder="Ex: 5">
+
+        <label>Minutos de exercícios hoje:</label>
+        <input type="number" id="exe" placeholder="Ex: 20">
+
+        <button onclick="calcular()">Calcular</button>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function calcular() {
+
+            let agua = Number(document.getElementById("agua").value);
+            let exe = Number(document.getElementById("exe").value);
+
+            if (isNaN(agua) || isNaN(exe)) {
+                document.getElementById("resultado").innerText = "Preencha todos os campos.";
+                return;
+            }
+
+            let pon = 0;
+
+            if (agua >= 8) pon += 50;
+            else pon += (agua / 8) * 50;
+
+            if (exe >= 30) pon += 50;
+            else pon += (exe / 30) * 50;
+
+            let nivel = "";
+            if (pon >= 80) nivel = "Perfeito! Continue assim 😄";
+            else if (pon >= 50) nivel = "Está bom, mas dá pra melhorar 🙂";
+            else nivel = "⚠ Se cuida, amigo!";
+
+            document.getElementById("resultado").innerText =
+                `Sua pontuação de saúde é ${pon.toFixed(1)} pontos. ${nivel}`;
+        }
+    </script>
+
+</body>
+</html>
