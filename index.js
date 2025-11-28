@@ -5,7 +5,7 @@ function calcular() {
   if (isNaN(agua) || isNaN(exe) || exe == 0 || agua == 0) {
     document.getElementById("resultado").style.backgroundColor = "white";
     document.getElementById("resultado").innerText =
-      "Preencha todos os campos.";
+      "Preencha todos os campos!";
     return;
   }
 
